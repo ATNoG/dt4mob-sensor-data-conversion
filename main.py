@@ -1,0 +1,8 @@
+import asyncio
+
+from app.service import Service
+
+if __name__ == "__main__":
+    service = Service()
+
+    asyncio.run(service.run())

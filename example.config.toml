@@ -1,0 +1,26 @@
+atb_realtime_topic = "realtime"
+atb_history_topic = "history"
+
+[consumer]
+backend = "mqtt"
+url = "mqtt://localhost"
+topics = ["topic"]
+
+[consumer]
+backend = "webhook"
+host = "localhost"
+port = 8000
+base_path = "/webhook"
+
+[sender]
+url = "mqtt://localhost"
+
+[converter]
+[converter.atobe_reference_plane]
+origin = [0, 0]
+point_on_positive_horizontal_axis = [0, 1]
+
+
+[converter.outsight_reference_plane]
+origin = [0, 0]
+point_on_positive_horizontal_axis = [0, 1]

@@ -1,0 +1,29 @@
+[project]
+name = "outsight-to-atobe"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "amqtt>=0.11.3",
+  "fastapi[standard]>=0.129.0",
+  "loguru>=0.7.3",
+  "numpy>=2.3.4",
+  "pydantic>=2.12.3",
+  "pydantic-settings>=2.11.0",
+  "pymap3d>=3.2.0",
+]
+
+[dependency-groups]
+dev = ["mypy>=1.18.2", "ruff>=0.14.14"]
+
+[tool.mypy]
+strict = true
+plugins = ['pydantic.mypy']
+
+[[tool.mypy.overrides]]
+module = ["amqtt.client", "amqtt.contexts", "pymap3d"]
+ignore_missing_imports = true
+
+[tool.ruff.lint]
+extend-select = ["T20"]
