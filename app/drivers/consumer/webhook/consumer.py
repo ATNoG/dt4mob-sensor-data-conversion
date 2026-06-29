@@ -10,7 +10,7 @@ from app.interfaces.consumer import ConsumerInterface
 from app.settings.consumer import WebhookConsumerSettings
 
 
-class WebhooConsumer(ConsumerInterface):
+class WebhookConsumer(ConsumerInterface):
     def __init__(self, consumer_settings: WebhookConsumerSettings) -> None:
         self.settings = consumer_settings
         self.queue: asyncio.Queue[bytes] = asyncio.Queue()

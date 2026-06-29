@@ -1,0 +1,52 @@
+# ==========================================
+# Sensor Data Conversion Example Configuration (TOML 1.0.0)
+# ==========================================
+
+# General log level for the application
+# Options: "CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"
+log_level = "INFO" # Literal String
+
+# MQTT topic to publish converted real-time ORT Tracking messages to
+atb_realtime_topic = "" # Non-empty String
+
+# MQTT topic to publish converted history ORT Tracking messages to
+atb_history_topic = "" # Non-empty String
+
+# ------------------------------------------
+# Consumer Settings
+# Options: "disabled", "mqtt", "webhook"
+# ------------------------------------------
+[consumer]
+backend = "disabled" # Discriminator
+
+# MQTT Consumer Options (only used if backend="mqtt")
+# backend = "mqtt"
+# url = "mqtt://localhost"  # URL String (default: "mqtt://localhost")
+# topics = []               # List of Strings — MQTT topics to subscribe to
+
+# Webhook Consumer Options (only used if backend="webhook")
+# backend = "webhook"
+# host = "localhost"  # Non-empty String (default: "localhost")
+# port = 8000         # Integer (0-65535, default: 8000)
+# base_path = "/"     # String (default: "/")
+
+# ------------------------------------------
+# Sender Settings
+# ------------------------------------------
+[sender]
+url = "mqtt://localhost" # URL String (default: "mqtt://localhost")
+
+# ------------------------------------------
+# Converter Settings
+# ------------------------------------------
+[converter]
+
+# OutSight reference plane — defines the geographic coordinate system of the incoming data
+[converter.outsight_reference_plane]
+origin = [0.0, 0.0]                            # [latitude (-90..90), longitude (-180..180)] of the origin
+point_on_positive_horizontal_axis = [0.0, 1.0] # [latitude (-90..90), longitude (-180..180)] point defining the horizontal axis direction
+
+# AToBe reference plane — defines the target geographic coordinate system for the converted output
+[converter.atobe_reference_plane]
+origin = [0.0, 0.0]                            # [latitude (-90..90), longitude (-180..180)] of the origin
+point_on_positive_horizontal_axis = [0.0, 1.0] # [latitude (-90..90), longitude (-180..180)] point defining the horizontal axis direction

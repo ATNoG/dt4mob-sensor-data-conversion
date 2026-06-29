@@ -20,7 +20,7 @@ LogLevel = Literal["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"]
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         toml_file="config.toml",
-        env_prefix="OUTSIGHT_TO_ATOBE_",
+        env_prefix="SENSOR_DATA_CONVERSION_",
         env_nested_delimiter="__",
     )
 

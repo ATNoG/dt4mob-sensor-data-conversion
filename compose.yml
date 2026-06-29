@@ -1,0 +1,11 @@
+services:
+  conversion-service:
+    build: .
+    container_name: conversion-service
+    volumes:
+      - ./config.toml:/app/config.toml:ro
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
